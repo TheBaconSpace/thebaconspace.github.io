@@ -30,6 +30,14 @@ fetch(`https://api.github.com/users/${githubUsername}`)
     document.head.appendChild(ogTypeTag);
     document.head.appendChild(ogUrlTag);
     document.head.appendChild(ogImageTag);
+
+    // Create a link element for the favicon
+    const faviconLink = document.createElement("link");
+    faviconLink.rel = "icon";
+    faviconLink.href = avatarUrl;
+
+    // Append the link element to the document's head for the favicon
+    document.head.appendChild(faviconLink);
   })
   .catch((error) => {
     console.error("Error fetching GitHub data:", error);
