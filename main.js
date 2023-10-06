@@ -5,14 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
             const socialLinksSection = document.getElementById("social-links");
 
-            // Generate HTML for each social link
+            // Generate buttons for each social link
             data.socialLinks.forEach((link) => {
-                const socialLink = document.createElement("a");
-                socialLink.href = link.url;
-                socialLink.target = "_blank"; // Open links in a new tab
-                socialLink.innerHTML = `<i class="${link.icon}"></i> ${link.name}`;
+                const socialButton = document.createElement("a");
+                socialButton.href = link.url;
+                socialButton.target = "_blank";
+                socialButton.className = "btn btn-primary mr-2 mb-2";
+                socialButton.innerHTML = `<i class="${link.icon}"></i> ${link.name}`;
 
-                socialLinksSection.appendChild(socialLink);
+                socialLinksSection.appendChild(socialButton);
             });
         })
         .catch((error) => {
