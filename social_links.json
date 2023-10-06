@@ -7,12 +7,12 @@
        },
        {
            "name": "Threads",
-           "url": "https://threads.net/Bacon_Space",
+           "url": "https://tinyurl.com/BaconThreads",
            "icon": "fab fa-threads"
        },
        {
            "name": "Twitter",
-           "url": "https://twitter.com/Bacon_Space",
+           "url": "https://tinyurl.com/BaconSpaceX",
            "icon": "fab fa-x-twitter"
        },
        {
@@ -22,18 +22,33 @@
        },
        {
            "name": "WordPress",
-           "url": "https://baconspace.wordpress.com",
+           "url": "https://tinyurl.com/BaconSpaceBlogs",
            "icon": "fab fa-wordpress"
        },
        {
            "name": "YouTube",
-           "url": "https://www.youtube.com/@Bacon_Space?sub_confirmation=1",
+           "url": "https://tinyurl.com/BaconSpaceYT",
            "icon": "fab fa-youtube"
        },
        {
            "name": "Guilded",
-           "url": "https://guilded.gg/thebaconspace",
+           "url": "https://bit.ly/BaconGuilded",
            "icon": "fab fa-guilded"
+       },
+       {
+           "name": "Discord",
+           "url": "https://tinyurl.com/BaconDiscord",
+           "icon": "fab fa-discord"
+       },
+       {
+           "name": "TikTok",
+           "url": "https://tinyurl.com/BaconTiktok",
+           "icon": "fab fa-tiktok"
+       },
+       {
+           "name": "Mastodon",
+           "url": "https://tinyurl.com/BaconMastodon",
+           "icon": "fab fa-mastodon"
        }
    ]
 }
