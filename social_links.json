@@ -29,6 +29,11 @@
            "name": "YouTube",
            "url": "https://www.youtube.com/@Bacon_Space?sub_confirmation=1",
            "icon": "fab fa-youtube"
+       },
+       {
+           "name": "Guilded",
+           "url": "https://guilded.gg/thebaconspace",
+           "icon": "fab fa-guilded"
        }
    ]
 }
