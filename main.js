@@ -1,11 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
+function fetchAndRenderSocialLinks() {
     // Fetch the social links from the JSON file
-    fetch("https://thebaconspace.github.io/social_links.json")
+    fetch("social_links.json")
         .then((response) => response.json())
         .then((data) => {
             const socialLinksSection = document.getElementById("social-links");
 
-            // Generate button-links for each social link
+            // Clear existing social links
+            socialLinksSection.innerHTML = '';
+
+            // Generate buttons for each social link
             data.socialLinks.forEach((link) => {
                 const socialButton = document.createElement("a");
                 socialButton.href = link.url;
@@ -19,4 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => {
             console.error("Error loading social links:", error);
         });
-});
+}
+
+// Fetch and render social links initially
+fetchAndRenderSocialLinks();
+
+// Automatically refresh social links every 3 minutes (180,000 milliseconds)
+setInterval(fetchAndRenderSocialLinks, 3 * 60 * 1000); // 3 minutes in milliseconds
