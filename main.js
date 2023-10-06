@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Fetch the social links from the JSON file
-    fetch("social_links.json")
+    fetch("https://thebaconspace.github.io/social_links.json")
         .then((response) => response.json())
         .then((data) => {
             const socialLinksSection = document.getElementById("social-links");
