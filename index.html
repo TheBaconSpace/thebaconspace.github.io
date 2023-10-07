@@ -81,11 +81,27 @@
         </section>
     </main>
     <footer>
-        &copy; 2023 Bacon_Space
+        &copy; <span id="year"></span> Bacon_Space
     </footer>
     <!-- Include Bootstrap 5.3.0 JS (Popper.js and Bootstrap JS) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
-    <script src="meta.js"></script>
+       <script>
+        // Function to get the current year in the specified timezone
+        function getCurrentYearInTimeZone(timezone) {
+            const options = { year: 'numeric', timeZone: timezone };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const currentYear = formatter.format(new Date());
+            return currentYear;
+        }
+
+        // Update the current year in the specified timezone
+        const currentYearElement = document.getElementById('current-year');
+        const yearElement = document.getElementById('year');
+        const timezone = 'America/Toronto'; // Specify your desired timezone here
+        const currentYear = getCurrentYearInTimeZone(timezone);
+        currentYearElement.textContent = currentYear;
+        yearElement.textContent = currentYear;
+    </script>
 </body>
 </html>
