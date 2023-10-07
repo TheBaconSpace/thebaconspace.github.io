@@ -21,6 +21,11 @@
            "icon": "fab fa-facebook"
        },
        {
+           "name": "TheCursedGroup",
+           "url": "https://tinyurl.com/TheCursedFaceBook",
+           "icon": "fab fa-facebook"
+       },
+       {
            "name": "WordPress",
            "url": "https://tinyurl.com/BaconSpaceBlogs",
            "icon": "fab fa-wordpress"
@@ -49,11 +54,6 @@
            "name": "Mastodon",
            "url": "https://tinyurl.com/BaconMastodon",
            "icon": "fab fa-mastodon"
-       },
-       {
-           "name": "TheCursedGroup",
-           "url": "https://tinyurl.com/TheCursedFaceBook",
-           "icon": "fab fa-facebook"
        },
        {
            "name": "GitHub",
