@@ -11,6 +11,11 @@
            "icon": "fab fa-threads"
        },
        {
+           "name": "Instagram",
+           "url": "https://tinyurl.com/BaconInsta",
+           "icon": "fab fa-instagram"
+       },
+       {
            "name": "Twitter",
            "url": "https://tinyurl.com/BaconSpaceX",
            "icon": "fab fa-x-twitter"
