@@ -54,6 +54,11 @@
            "name": "TheCursedGroup",
            "url": "https://tinyurl.com/TheCursedFaceBook",
            "icon": "fab fa-facebook"
+       },
+       {
+           "name": "GitHub",
+           "url": "https://tinyurl.com/BaconGitHub",
+           "icon": "fab fa-github"
        }
    ]
 }
