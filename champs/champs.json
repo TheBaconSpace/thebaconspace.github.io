@@ -1,12 +1,12 @@
 {
   "BSW World Champ": "Brock Lesnar",
   "BSW Tag Team Champions": {
-    "Wes Lee": "BSW Tag Team Champion",
-    "LA Knight": "BSW Tag Team Champion"
+    "BSW Tag Team Champion": "Wes Lee",
+    "BSW Tag Team Champion": "LA Knight"
   },
   "BSW Women's Tag Team Champions": {
-    "Raquel": "BSW Women's Tag Team Champion",
-    "Liv Morgan": "BSW Women's Tag Team Champion"
+    "BSW Women's Tag Team Champion": "Raquel",
+    "BSW Women's Tag Team Champion": "Liv Morgan"
   },
   "BSW Level UP Championship": "Xavier Woods"
 }
