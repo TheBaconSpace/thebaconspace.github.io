@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('champs.json')
+    fetch('https://thebsw.github.io/champs.json')
         .then(response => response.json())
         .then(data => {
             const championsContainer = document.getElementById('champions');
