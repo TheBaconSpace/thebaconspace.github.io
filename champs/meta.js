@@ -1,5 +1,5 @@
 // Define the GitHub username
-const githubUsername = "TheBaconSpace";
+const githubUsername = "TheBSW";
 
 // Get the GitHub avatar using the GitHub API
 fetch(`https://api.github.com/users/${githubUsername}`)
