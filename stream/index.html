@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Twitch Chat Overlay</title>
+    <style>
+        /* Your CSS styles for the overlay go here */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: flex-start; /* Align elements to the top of the page */
+        }
+        #twitch-player {
+            flex: 1; /* Take up remaining space on the left side */
+            max-width: 70%; /* Limit the width to 70% of the page */
+        }
+        #chat-container {
+            max-width: 620; /* Limit the width to 30% of the page */
+            padding: 20px;
+            border: 2px solid #00f;
+            border-radius: 5px;
+            margin-left: 10px; /* Add some space between the player and chat */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        #chat-messages {
+            list-style: none;
+            padding: 0;
+        }
+        #chat-messages li {
+            margin: 5px 0;
+        }
+        img.emote {
+            max-width: 28px;
+            max-height: 28px;
+            vertical-align: middle;
+        }
+        .admin {
+            color: red;
+            font-weight: bold;
+        }
+        .bot {
+            color: #00f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!-- Add a placeholder for the Twitch embed -->
+<div id="twitch-embed"></div>
+
+<!-- Load the Twitch embed script -->
+<script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+<!-- Create a Twitch.Player object. This will render within the placeholder div -->
+<script type="text/javascript">
+  new Twitch.Player("twitch-embed", {
+    channel: "bacon_space",
+	    width: "620",
+    height: "378"
+  });
+</script>
+    </div>
+    <div id="chat-container">
+        <ul id="chat-messages"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="tmi.js"></script>
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const chatMessages = document.getElementById('chat-messages');
+
+        // Function to fetch emote data from the specified site
+        async function fetchEmoteData(channel) {
+            try {
+                const emoteDataResponse = await fetch(`https://emotes.adamcy.pl/v1/channel/Bacon_Space/emotes/all`);
+                const emoteData = await emoteDataResponse.json();
+                return emoteData;
+            } catch (error) {
+                console.error(`Error fetching emote data for ${channel}:`, error);
+                return null;
+            }
+        }
+
+        // Initialize the overlay
+        async function initializeOverlay() {
+            const channel = "Bacon_Space"; // Set the channel you want to read from
+            const emoteData = await fetchEmoteData(channel);
+
+            const client = new tmi.Client({
+                connection: { secure: true, reconnect: true },
+                channels: [channel],
+            });
+
+            client.connect();
+
+            client.on('message', (currentChannel, userstate, message, self) => {
+                // Replace emote codes in the message with emote images
+                const messageWithEmotes = parseEmotes(message, emoteData);
+
+                if (userstate.username === channel) {
+                    displayMessage(userstate.username, messageWithEmotes, 'admin');
+                } else if (userstate['message-type'] === 'bot') {
+                    displayMessage(userstate.username, messageWithEmotes, 'bot');
+                } else {
+                    displayMessage(userstate.username, messageWithEmotes);
+                }
+
+                // Scroll to the bottom of the chat container
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            });
+        }
+
+        // Function to parse emotes and replace emote codes with images
+        function parseEmotes(message, emoteData) {
+            for (const emote of emoteData) {
+                const emoteCode = emote.code;
+                const emoteURL = emote.urls[0].url;
+                const imgTag = `<img src="${emoteURL}" alt="${emoteCode}"`;
+                // Use a regular expression to replace all occurrences of the emote code
+                message = message.replace(new RegExp(emoteCode, 'g'), imgTag);
+            }
+            return message;
+        }
+
+        // Function to display messages with specific styles (admin, bot, or default)
+        function displayMessage(username, message, styleClass) {
+            const li = document.createElement('li');
+            if (styleClass) {
+                li.innerHTML = `<span class="${styleClass}">${username}: ${message}</span>`;
+            } else {
+                li.innerHTML = `${username}: ${message}`;
+            }
+            chatMessages.appendChild(li);
+        }
+
+        // Initialize the overlay
+        initializeOverlay();
+    </script>
+</body>
+</html>
