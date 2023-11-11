@@ -61,6 +61,11 @@
            "icon": "fab fa-mastodon"
        },
        {
+           "name": "BlueSky",
+           "url": "https://bsky.app/profile/baconspace.bsky.social",
+           "icon": "fab fa-skyatlas"
+       },
+       {
            "name": "BSW Champs",
            "url": "https://tinyurl.com/BSWChamps",
            "icon": "fab fa-github"
