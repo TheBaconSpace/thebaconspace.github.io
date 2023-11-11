@@ -1,0 +1,49 @@
+{
+   "socialLinks": [
+       {
+           "name": "Twitch",
+           "url": "https://bit.ly/Bacon_Space",
+           "icon": "fab fa-twitch"
+       },
+       {
+           "name": "Threads",
+           "url": "https://tinyurl.com/BaconThreads",
+           "icon": "fab fa-threads"
+       },
+       {
+           "name": "Instagram",
+           "url": "https://tinyurl.com/BaconInsta",
+           "icon": "fab fa-instagram"
+       },
+       {
+           "name": "Twitter",
+           "url": "https://tinyurl.com/BaconSpaceX",
+           "icon": "fab fa-x-twitter"
+       },
+       {
+           "name": "Facebook",
+           "url": "https://tinyurl.com/BaconsFB",
+           "icon": "fab fa-facebook"
+       },
+       {
+           "name": "FaceBook",
+           "url": "https://tinyurl.com/TheCursedFaceBook",
+           "icon": "fab fa-facebook"
+       },
+       {
+           "name": "YouTube",
+           "url": "https://tinyurl.com/BaconSpaceYT",
+           "icon": "fab fa-youtube"
+       },
+       {
+           "name": "Discord",
+           "url": "https://tinyurl.com/BaconDiscord",
+           "icon": "fab fa-discord"
+       },
+       {
+           "name": "TikTok",
+           "url": "https://tinyurl.com/BaconTiktok",
+           "icon": "fab fa-tiktok"
+       }
+   ]
+}
