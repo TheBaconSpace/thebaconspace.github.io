@@ -42,7 +42,7 @@ fetch(`https://api.github.com/users/${githubUsername}`)
     // Add Twitter card meta tags
     const twitterCardTag = document.createElement("meta");
     twitterCardTag.setAttribute("name", "twitter:card");
-    twitterCardTag.setAttribute("content", "summary");
+    twitterCardTag.setAttribute("content", "summary_large_image");
 
     const twitterSiteTag = document.createElement("meta");
     twitterSiteTag.setAttribute("name", "twitter:site");
@@ -52,10 +52,15 @@ fetch(`https://api.github.com/users/${githubUsername}`)
     twitterCreatorTag.setAttribute("name", "twitter:creator");
     twitterCreatorTag.setAttribute("content", "@Bacon_Space");
 
+    const twitterTitleTag = document.createElement("meta");
+    twitterTitleTag.setAttribute("name", "twitter:title");
+    twitterTitleTag.setAttribute("content", "Bacon_Space Social Links");
+
     // Append Twitter card meta tags to the document's head
     document.head.appendChild(twitterCardTag);
     document.head.appendChild(twitterSiteTag);
     document.head.appendChild(twitterCreatorTag);
+    document.head.appendChild(twitterTitleTag);
   })
   .catch((error) => {
     console.error("Error fetching GitHub data:", error);
