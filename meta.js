@@ -38,6 +38,24 @@ fetch(`https://api.github.com/users/${githubUsername}`)
 
     // Append the link element to the document's head for the favicon
     document.head.appendChild(faviconLink);
+
+    // Add Twitter card meta tags
+    const twitterCardTag = document.createElement("meta");
+    twitterCardTag.setAttribute("name", "twitter:card");
+    twitterCardTag.setAttribute("content", "summary");
+
+    const twitterSiteTag = document.createElement("meta");
+    twitterSiteTag.setAttribute("name", "twitter:site");
+    twitterSiteTag.setAttribute("content", "@Bacon_Space");
+
+    const twitterCreatorTag = document.createElement("meta");
+    twitterCreatorTag.setAttribute("name", "twitter:creator");
+    twitterCreatorTag.setAttribute("content", "@Bacon_Space");
+
+    // Append Twitter card meta tags to the document's head
+    document.head.appendChild(twitterCardTag);
+    document.head.appendChild(twitterSiteTag);
+    document.head.appendChild(twitterCreatorTag);
   })
   .catch((error) => {
     console.error("Error fetching GitHub data:", error);
