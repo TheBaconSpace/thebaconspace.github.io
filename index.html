@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="description" content="Bacon_Space's Social's" />
+    <meta name="keywords" content="Twitch, Wrestling, Bacon_Space" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="og:image" content="https://avatars.githubusercontent.com/u/16171045?v=4" id="og-image" />
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/16171045?v=4" id="twitter-image" />
     <title>Bacon_Space</title>
     <!-- Include Bootstrap 5.3.0 CSS --> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Include Font Awesome 6.4.2 CSS -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta name="description" content="Bacon_Space's Social's">
-	<meta name="keywords" content="Twitch, Wrestling, Bacon_Space">
-
-<meta name="robots" content="noindex, nofollow">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <!-- Custom CSS for styling -->
-    <link rel="icon" type="image/x-icon" href="default-favicon.ico" id="favicon">
-    <meta name="og:image" content="https://avatars.githubusercontent.com/u/16171045?v=4" id="og-image">
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/16171045?v=4" id="twitter-image">
+    <link rel="icon" type="image/x-icon" href="default-favicon.ico" id="favicon" />
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
-			    text-align: -webkit-center;
+            text-align: -webkit-center;
         }
         header {
             background-color: #007bff;
@@ -53,26 +51,11 @@
             text-align: center;
             padding: 10px 0;
         }
-		b{
-			text-align: -webkit-center;
-		}
+        b {
+            text-align: -webkit-center;
+        }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Bacon_Space</h1>
-        <p>Welcome to my profile!</p>
-    </header>
-    <main>
-        <section id="social-links">
-            <!-- Social links will be dynamically loaded here -->
-        </section>
-    </main>
-    <footer>
-        &copy; <span id="current-year"></span> Bacon_Space <!-- Update the year here too -->
-    </footer>
-    <!-- Include Bootstrap 5.3.0 JS (Popper.js and Bootstrap JS) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript code starts here -->
     <script>
         // Function to get the current year in the specified timezone
         function getCurrentYearInTimeZone(timezone) {
@@ -82,9 +65,37 @@
             return currentYear;
         }
 
-        // Fetch and render social links
+        // Fetch TheBaconSpace user's avatar and repository creation date from GitHub API
+        fetch('https://api.github.com/users/TheBaconSpace')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the avatar URL and repository creation date from the API response
+                const avatarUrl = data.avatar_url;
+                const repositoryCreatedAt = new Date(data.created_at);
+
+                // Update the href attribute of the favicon link
+                const favicon = document.getElementById('favicon');
+                favicon.href = avatarUrl;
+
+                // Update the current year in the specified timezone
+                const currentYearElement = document.getElementById('current-year');
+                const timezone = 'America/Toronto'; // Specify your desired timezone here
+                const currentYear = getCurrentYearInTimeZone(timezone);
+                currentYearElement.textContent = `${repositoryCreatedAt.getFullYear()} - ${currentYear}`;
+
+                // Fetch and render social links initially
+                fetchAndRenderSocialLinks();
+
+                // Automatically refresh social links every 3 minutes (180,000 milliseconds)
+                setInterval(fetchAndRenderSocialLinks, 3 * 60 * 1000); // 3 minutes in milliseconds
+            })
+            .catch(error => {
+                console.error('Error fetching data from GitHub:', error);
+            });
+
+        // Function to fetch and render social links
         function fetchAndRenderSocialLinks() {
-            // Fetch the social links from the JSON file
+            // Fetch the social links from the JSON file (replace with your actual JSON file URL)
             fetch("https://thebaconspace.github.io/social_links.json")
                 .then((response) => response.json())
                 .then((data) => {
@@ -98,9 +109,11 @@
                         const socialButton = document.createElement("a");
                         socialButton.href = link.url;
                         socialButton.target = "_blank";
-						socialButton.style.textAlign = "-webkit-center";
+                        socialButton.style.textAlign = "-webkit-center";
                         socialButton.className = "btn btn-outline-primary mr-2 mb-2"; // Add margin to the right and bottom
-                        socialButton.innerHTML = `${link.name} <i class="${link.icon}"></i>`;
+
+                        // Update this line to show the icon before the text
+                        socialButton.innerHTML = `<i class="${link.icon}"></i> ${link.name}`;
 
                         socialLinksSection.appendChild(socialButton);
                     });
@@ -109,36 +122,23 @@
                     console.error("Error loading social links:", error);
                 });
         }
-
-        // Fetch TheBaconSpace user's avatar from GitHub API
-        fetch('https://api.github.com/users/TheBaconSpace')
-            .then(response => response.json())
-            .then(data => {
-                // Extract the avatar URL from the API response
-                const avatarUrl = data.avatar_url;
-                const ogImage = document.getElementById('og-image');
-                ogImage.content = avatarUrl;
-                const twitterImage = document.getElementById('twitter-image');
-                twitterImage.content = avatarUrl;
-                // Update the href attribute of the favicon link
-                const favicon = document.getElementById('favicon');
-                favicon.href = avatarUrl;
-
-                // Update the current year in the specified timezone
-                const currentYearElement = document.getElementById('current-year');
-                const timezone = 'America/Toronto'; // Specify your desired timezone here
-                const currentYear = getCurrentYearInTimeZone(timezone);
-                currentYearElement.textContent = currentYear;
-
-                // Fetch and render social links initially
-                fetchAndRenderSocialLinks();
-
-                // Automatically refresh social links every 3 minutes (180,000 milliseconds)
-                setInterval(fetchAndRenderSocialLinks, 3 * 60 * 1000); // 3 minutes in milliseconds
-            })
-            .catch(error => {
-                console.error('Error fetching avatar:', error);
-            });
     </script>
+    <!-- JavaScript code ends here -->
+</head>
+<body>
+    <header>
+        <h1>Bacon_Space</h1>
+        <p>Welcome to my profile!</p>
+    </header>
+    <main>
+        <section id="social-links">
+            <!-- Social links will be dynamically loaded here -->
+        </section>
+    </main>
+    <footer>
+        &copy; <span id="current-year"></span> Bacon_Space
+    </footer>
+    <!-- Include Bootstrap 5.3.0 JS (Popper.js and Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
