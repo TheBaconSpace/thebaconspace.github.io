@@ -1,0 +1,14 @@
+{
+   "Links": [
+       {
+           "name": "Home",
+           "url": "https://thebaconspace.github.io/",
+           "icon": "fab fa-github"
+       },
+        {
+           "name": "Projects",
+           "url": "https://thebaconspace.github.io/Project.html",
+           "icon": "fab fa-github"
+       }
+   ]
+}
